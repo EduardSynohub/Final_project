@@ -1,6 +1,8 @@
-package pl.coderslab;
+package pl.coderslab.domain.restaurant;
 
 import lombok.*;
+import pl.coderslab.domain.equipment.Equipment;
+import pl.coderslab.domain.repair_service.RepairService;
 
 import javax.persistence.*;
 import java.util.ArrayList;

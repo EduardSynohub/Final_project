@@ -1,6 +1,7 @@
-package pl.coderslab;
+package pl.coderslab.domain.equipment;
 
 import lombok.*;
+import pl.coderslab.domain.breakdown.Breakdown;
 
 
 import javax.persistence.*;

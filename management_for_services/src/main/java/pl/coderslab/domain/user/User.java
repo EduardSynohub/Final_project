@@ -1,6 +1,7 @@
-package pl.coderslab;
+package pl.coderslab.domain.user;
 
 import lombok.*;
+import pl.coderslab.domain.restaurant.Restaurant;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
