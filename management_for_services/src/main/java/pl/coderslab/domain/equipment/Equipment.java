@@ -5,6 +5,7 @@ import pl.coderslab.domain.breakdown.Breakdown;
 
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
+@ToString
+@Transactional
 @Entity
 @Table(name = "equipments")
 public class Equipment {
@@ -22,7 +25,7 @@ public class Equipment {
     private Long id;
     private String name;
 
-    @OneToMany
-    @JoinColumn(name = "equipment_id")
-    private List<Breakdown> breakdowns = new ArrayList<>();
+//    @OneToMany
+//    @JoinColumn(name = "equipment_id")
+//    private List<Breakdown> breakdowns = new ArrayList<>();
 }

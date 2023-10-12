@@ -1,8 +1,11 @@
 package pl.coderslab.domain.repair_service;
 
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class JpaRepairService implements RepairServiseService{
 
     private final RepairServiceRepository repairServiceRepository;

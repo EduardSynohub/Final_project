@@ -1,6 +1,7 @@
 package pl.coderslab.domain.user;
 
 import lombok.*;
+import org.hibernate.validator.constraints.UniqueElements;
 import pl.coderslab.domain.restaurant.Restaurant;
 
 import javax.persistence.*;

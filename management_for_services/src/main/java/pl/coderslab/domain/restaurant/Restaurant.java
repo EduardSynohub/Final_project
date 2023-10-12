@@ -5,6 +5,7 @@ import pl.coderslab.domain.equipment.Equipment;
 import pl.coderslab.domain.repair_service.RepairService;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
+@Transactional
 @Entity
 @Table(name = "restaurants")
 public class Restaurant {
@@ -23,7 +25,10 @@ public class Restaurant {
     private String name;
     private String address;
 
-    @ManyToMany
+    @ManyToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
     private List<Equipment> equipments = new ArrayList<>();
 
     @ManyToMany(cascade = {
@@ -44,5 +49,13 @@ public class Restaurant {
     public void removeRepairService(RepairService repairService) {
         repairServices.remove(repairService);
         repairService.getRestaurants().remove(this);
+    }
+
+    public void addEquipment(Equipment equipment) {
+        equipments.add(equipment);
+    }
+
+    public void removeEquipment(Equipment equipment) {
+        equipments.remove(equipment);
     }
 }

@@ -1,8 +1,11 @@
 package pl.coderslab.domain.equipment;
 
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class JpaEquipmentService implements EquipmentService{
 
     private final EquipmentRepository equipmentRepository;
@@ -17,12 +20,12 @@ public class JpaEquipmentService implements EquipmentService{
     }
 
     @Override
-    public Optional<Equipment> get(String name) {
-        return equipmentRepository.findEquipmentByName(name);
+    public Optional<Equipment> get(Long id) {
+        return equipmentRepository.findById(id);
     }
 
     @Override
-    public void add(Equipment equipment) {
+    public void create(Equipment equipment) {
         equipmentRepository.save(equipment);
     }
 

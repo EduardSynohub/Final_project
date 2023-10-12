@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public interface EquipmentService {
     List<Equipment> getAll();
-    Optional<Equipment> get(String name);
-    void add(Equipment equipment);
+    Optional<Equipment> get(Long id);
+    void create(Equipment equipment);
     void delete(Long id);
 }

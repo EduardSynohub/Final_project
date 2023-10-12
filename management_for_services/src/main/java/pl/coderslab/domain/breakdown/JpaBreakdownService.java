@@ -1,8 +1,11 @@
 package pl.coderslab.domain.breakdown;
 
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class JpaBreakdownService implements BreakdownService{
 
     private final BreakdownRepository breakdownRepository;
@@ -22,7 +25,7 @@ public class JpaBreakdownService implements BreakdownService{
     }
 
     @Override
-    public void add(Breakdown breakdown) {
+    public void create(Breakdown breakdown) {
         breakdownRepository.save(breakdown);
     }
 

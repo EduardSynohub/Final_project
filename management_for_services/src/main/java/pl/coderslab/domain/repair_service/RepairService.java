@@ -1,9 +1,11 @@
 package pl.coderslab.domain.repair_service;
 
 import lombok.*;
+import org.hibernate.validator.constraints.UniqueElements;
 import pl.coderslab.domain.restaurant.Restaurant;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
+@Transactional
 @Entity
 @Table(name = "repair_services")
 public class RepairService {

@@ -22,6 +22,11 @@ public class UserController {
         this.jpaRestaurantService = jpaRestaurantService;
     }
 
+    @GetMapping("/start")
+    public String showStartPage() {
+        return "index";
+    }
+
     @GetMapping("/all")
     public String showAllUsers(Model model) {
         List<User> users = jpaUserService.getAll();
