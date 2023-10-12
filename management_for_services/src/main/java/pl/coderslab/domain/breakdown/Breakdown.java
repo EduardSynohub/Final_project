@@ -9,7 +9,6 @@ import java.time.LocalDate;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @EqualsAndHashCode(of = "id")
 @Entity
 @Table(name = "breakdowns")

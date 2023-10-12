@@ -33,9 +33,4 @@ public class JpaUserService implements UserService{
     public void delete(Long id) {
         userRepository.deleteById(id);
     }
-
-    @Override
-    public void update(User user) {
-        userRepository.save(user);
-    }
 }

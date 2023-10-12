@@ -8,5 +8,4 @@ public interface RestaurantService {
     Optional<Restaurant> get(Long id);
     void create(Restaurant restaurant);
     void delete(Long id);
-    void update(Restaurant restaurant);
 }

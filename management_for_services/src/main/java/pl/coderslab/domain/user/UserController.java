@@ -60,7 +60,7 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             return "user/edit";
         }
-        jpaUserService.update(user);
+        jpaUserService.create(user);
         return "redirect:/user/all";
     }
 

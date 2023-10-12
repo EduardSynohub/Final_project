@@ -33,9 +33,4 @@ public class JpaRestaurantService implements RestaurantService{
     public void delete(Long id) {
         restaurantRepository.deleteById(id);
     }
-
-    @Override
-    public void update(Restaurant restaurant) {
-        restaurantRepository.save(restaurant);
-    }
 }

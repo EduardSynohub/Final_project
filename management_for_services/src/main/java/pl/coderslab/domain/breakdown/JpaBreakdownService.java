@@ -1,0 +1,33 @@
+package pl.coderslab.domain.breakdown;
+
+import java.util.List;
+import java.util.Optional;
+
+public class JpaBreakdownService implements BreakdownService{
+
+    private final BreakdownRepository breakdownRepository;
+
+    public JpaBreakdownService(BreakdownRepository breakdownRepository) {
+        this.breakdownRepository = breakdownRepository;
+    }
+
+    @Override
+    public List<Breakdown> getAll() {
+        return breakdownRepository.findAll();
+    }
+
+    @Override
+    public Optional<Breakdown> get(Long id) {
+        return breakdownRepository.findById(id);
+    }
+
+    @Override
+    public void add(Breakdown breakdown) {
+        breakdownRepository.save(breakdown);
+    }
+
+    @Override
+    public void delete(Long id) {
+        breakdownRepository.deleteById(id);
+    }
+}
