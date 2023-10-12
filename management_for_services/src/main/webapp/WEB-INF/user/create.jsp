@@ -10,7 +10,7 @@
 
 </head>
 <body>
-<c:url var="edit_url" value="/user/create/${user.id}"/>
+<c:url var="edit_url" value="/user/edit/${user.id}"/>
 <form:form method="post" modelAttribute="user" action="${edit_url}">
   <form:hidden path="id"/>
   Wpisz imię: <form:input path="name"/>
@@ -25,7 +25,7 @@
   <form:errors path="jobTitle"/><br/>
   Wybierz restauracje: <form:select path="restaurant.id" items="${list_of_restaurant}" itemValue="id" itemLabel="name" />
   <form:errors path="restaurant"/><br/>
-  <input type="submit" value="Save">
+  <input type="submit" value="Rejestracja">
 </form:form>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

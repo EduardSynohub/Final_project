@@ -19,11 +19,11 @@
       <td><c:out value="${user.name}"/></td>
       <td><c:out value="${user.surname}"/></td>
       <td><c:out value="${user.jobTitle}"/></td>
-      <td><c:out value="${user.restaurant}"/></td>
+      <td><c:out value="${user.restaurant.name}"/></td>
       <td>
-        <a href="<c:out value="/admin/books/edit/${user.id}"/>">Edytuj</a>
-        <a href="<c:out value="/admin/books/delete/${user.id}"/>">Usuń</a>
-        <a href="<c:out value="/admin/books/get/${user.id}"/>">Pokaż</a>
+        <a href="<c:out value="/user/edit/${user.id}"/>">Edytuj</a>
+        <a href="<c:out value="/user/delete/${user.id}"/>">Usuń</a>
+        <a href="<c:out value="/user/get/${user.id}"/>">Pokaż</a>
       </td>
     </tr>
   </c:forEach>
