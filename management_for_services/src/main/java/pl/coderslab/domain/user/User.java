@@ -4,12 +4,14 @@ import lombok.*;
 import pl.coderslab.domain.restaurant.Restaurant;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import javax.validation.constraints.Email;
 
 @Getter
 @NoArgsConstructor @AllArgsConstructor
 @ToString
 @EqualsAndHashCode(of = "id")
+@Transactional
 @Entity
 @Table(name = "users")
 public class User {
