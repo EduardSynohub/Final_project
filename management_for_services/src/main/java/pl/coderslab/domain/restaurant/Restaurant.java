@@ -7,7 +7,9 @@ import pl.coderslab.domain.repair_service.RepairService;
 import javax.persistence.*;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -27,9 +29,9 @@ public class Restaurant {
 
     @ManyToMany(
             cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
+            fetch = FetchType.EAGER
     )
-    private List<Equipment> equipments = new ArrayList<>();
+    private Set<Equipment> equipments = new HashSet<>();
 
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
@@ -52,7 +54,7 @@ public class Restaurant {
     }
 
     public void addEquipment(Equipment equipment) {
-        equipments.add(equipment);
+        this.equipments.add(equipment);
     }
 
     public void removeEquipment(Equipment equipment) {

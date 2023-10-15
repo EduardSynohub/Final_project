@@ -42,11 +42,12 @@ public class RestaurantController {
         if (result.hasErrors()) {
             return "restaurant/create";
         }
-//        List<Equipment> equipmentList = jpaEquipmentService.getAll();
+        List<Equipment> equipmentList = jpaEquipmentService.getAll();
+        for (Equipment e : equipmentList) {
+            restaurant.addEquipment(e);
+        }
+//        restaurant.setEquipments(equipmentList);
         jpaRestaurantService.create(restaurant);
-//        for (Equipment e : equipmentList) {
-//            restaurant.addEquipment(e);
-//        }
         return "redirect:/restaurant/all";
     }
 

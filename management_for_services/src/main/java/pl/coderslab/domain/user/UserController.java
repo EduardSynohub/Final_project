@@ -37,7 +37,7 @@ public class UserController {
     @GetMapping("/create")
     public String showAddingForm(Model model) {
         model.addAttribute("user", new User());
-        return "user/create";
+        return /*"user/create"*/ "registration";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)

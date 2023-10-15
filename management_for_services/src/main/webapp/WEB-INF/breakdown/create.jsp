@@ -21,8 +21,10 @@
   Wybierz sprzęt: <form:select path="equipment.id" items="${list_of_equipments}" itemValue="id" itemLabel="name" />
   <form:errors path="equipment"/><br/>
   Wybierz serwis: <form:select path="repairService.id" items="${list_of_repair_services}" itemValue="id" itemLabel="name" />
-  <input type="submit" value="Zapisz">
+  <br>
+  <button type="submit" class="btn btn-outline-primary">Zapisz</button>
+<%--  <input type="submit" value="Zapisz">--%>
 </form:form>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<a href="<c:url value="/"/>">Home</a>
 </body>
 </html>
