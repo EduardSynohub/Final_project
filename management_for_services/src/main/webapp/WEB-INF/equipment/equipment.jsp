@@ -7,6 +7,11 @@
   <title>Opis sprzętu</title>
 </head>
 <body>
+<%@include file="/WEB-INF/dashboard-header.jsp"%>
+<section class="dashboard-section">
+  <div class="row dashboard-nowrap">
+    <%@ include file="/WEB-INF/side-panel.jsp" %>
+    <div>
 <table border="1">
   <thead>
   <th>Nazwa sprzętu</th>
@@ -18,5 +23,8 @@
   </tbody>
 </table>
 <a href="<c:out value="/equip/all"/>">Powrót</a>
+    </div>
+  </div>
+</section>
 </body>
 </html>

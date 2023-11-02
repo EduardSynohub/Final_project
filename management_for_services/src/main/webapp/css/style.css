@@ -457,3 +457,17 @@ margin: 0 auto !important;
 .schedules-content-header {
   margin-bottom: 50px;
 }
+
+.rating {
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.star {
+  color: gold;
+  transition: color 0.5s;
+}
+
+.star.filled {
+  color: orange;
+}

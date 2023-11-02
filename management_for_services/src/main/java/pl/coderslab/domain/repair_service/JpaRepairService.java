@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class JpaRepairService implements RepairServiseService{
+public class JpaRepairService implements RepairServiceService {
 
     private final RepairServiceRepository repairServiceRepository;
 

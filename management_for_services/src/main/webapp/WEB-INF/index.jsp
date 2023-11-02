@@ -15,7 +15,7 @@
 <a href="/problem/all">Wszystkie zgłoszenia</a><br>
 <a href="/problem/create">Dodaj zgłoszenie</a><br>
 
-<a href="<c:url value="/"/> ">Home</a>
+<a href="<c:url value="/"/> ">Na stronę główną</a>
 
 <%@include file="footer.jsp"%>
 

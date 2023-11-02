@@ -1,5 +1,7 @@
 package pl.coderslab.domain.repair_service;
 
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -7,6 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import pl.coderslab.domain.CurrentUser;
+import pl.coderslab.domain.breakdown.Breakdown;
+import pl.coderslab.domain.breakdown.JpaBreakdownService;
+import pl.coderslab.domain.equipment.Equipment;
+import pl.coderslab.domain.equipment.JpaEquipmentService;
+import pl.coderslab.domain.restaurant.JpaRestaurantService;
+import pl.coderslab.domain.restaurant.Restaurant;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -17,9 +26,15 @@ import java.util.List;
 public class RepairServiceController {
 
     private final JpaRepairService jpaRepairService;
+    private final JpaRestaurantService jpaRestaurantService;
+    private final JpaBreakdownService jpaBreakdownService;
+    private final JpaEquipmentService jpaEquipmentService;
 
-    public RepairServiceController(JpaRepairService jpaRepairService) {
+    public RepairServiceController(JpaRepairService jpaRepairService, JpaRestaurantService jpaRestaurantService, JpaBreakdownService jpaBreakdownService, JpaEquipmentService jpaEquipmentService) {
         this.jpaRepairService = jpaRepairService;
+        this.jpaRestaurantService = jpaRestaurantService;
+        this.jpaBreakdownService = jpaBreakdownService;
+        this.jpaEquipmentService = jpaEquipmentService;
     }
 
     @GetMapping("/all")
@@ -37,10 +52,14 @@ public class RepairServiceController {
 
     @Transactional
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String saveRepairService(@Valid RepairService repairService, BindingResult result) {
+    public String saveRepairService(@Valid RepairService repairService, BindingResult result, Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         if (result.hasErrors()) {
+            model.addAttribute("repair_service", repairService);
+            model.addAttribute("org.springframework.validation.BindingResult.repair_service", result);
             return "repair_service/create";
         }
+        Long id = currentUser.getUser().getId();
+
         jpaRepairService.create(repairService);
         return "redirect:/repair/all";
     }
@@ -56,6 +75,9 @@ public class RepairServiceController {
         if (bindingResult.hasErrors()) {
             return "repair_service/edit";
         }
+        if(repairService.getPhoneNumber().equals(jpaRepairService.get(repairService.getId()).get().getPhoneNumber())){
+            repairService.setPhoneNumber(jpaRepairService.get(repairService.getId()).get().getPhoneNumber());
+        }
         jpaRepairService.create(repairService);
         return "redirect:/repair/all";
     }
@@ -66,8 +88,19 @@ public class RepairServiceController {
         return "repair_service/repair_service";
     }
 
+    @Secured("ROLE_ADMIN")
     @GetMapping ("/delete/{id}")
     public String deleteRepairService(@PathVariable Long id) {
+        List<Restaurant> restaurants = jpaRestaurantService.getAll();
+        for (Restaurant r : restaurants) {
+            jpaRestaurantService.deleteRepairServiceFromRestaurant(id, r.getId());
+        }
+        List<Breakdown> breakdowns = jpaBreakdownService.getAll();
+        for (Breakdown b : breakdowns) {
+            if (b.getRepairService().getId().equals((jpaRepairService.get(id)).get().getId())) {
+                jpaBreakdownService.delete(b.getId());
+            }
+        }
         jpaRepairService.delete(id);
         return "redirect:/repair/all";
     }

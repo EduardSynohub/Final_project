@@ -1,13 +1,11 @@
 package pl.coderslab.domain.equipment;
 
 import lombok.*;
-import pl.coderslab.domain.breakdown.Breakdown;
 
 
 import javax.persistence.*;
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.List;
+import javax.validation.constraints.NotEmpty;
 
 @Setter
 @Getter
@@ -23,9 +21,6 @@ public class Equipment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty(message = "Pole nie powinno być puste")
     private String name;
-
-//    @OneToMany
-//    @JoinColumn(name = "equipment_id")
-//    private List<Breakdown> breakdowns = new ArrayList<>();
 }

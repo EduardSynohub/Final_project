@@ -8,4 +8,6 @@ public interface UserService {
     Optional<User> get(Long id);
     void create(User user);
     void delete(Long id);
+    User findByUserName(String username);
+    void saveUser(User user);
 }

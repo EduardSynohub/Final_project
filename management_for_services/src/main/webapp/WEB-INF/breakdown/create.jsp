@@ -1,30 +1,80 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+  response.setCharacterEncoding("UTF-8");
+  request.setCharacterEncoding("UTF-8");
+%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<html>
+<html lang="pl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dodawanie zgłoszenia</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
+  <meta charset="UTF-8">
+  <title>Dodawanie nowego zgłoszenia</title>
 </head>
 <body>
-<form:form method="post" modelAttribute="breakdown" action="${edit_url}">
-  <form:hidden path="id"/>
-  Opisz problem: <form:input path="description"/>
-  <form:errors path="description"/><br/>
-  Data zgłoszenia: <form:input type="date" path="dateOfNotification"/>
-  <form:errors path="dateOfNotification"/><br/>
-  Data przyjazdu serwisanta: <form:input type="date" path="dateOfArrival"/>
-  <form:errors path="dateOfArrival"/><br/>
-  Wybierz sprzęt: <form:select path="equipment.id" items="${list_of_equipments}" itemValue="id" itemLabel="name" />
-  <form:errors path="equipment"/><br/>
-  Wybierz serwis: <form:select path="repairService.id" items="${list_of_repair_services}" itemValue="id" itemLabel="name" />
-  <br>
-  <button type="submit" class="btn btn-outline-primary">Zapisz</button>
-<%--  <input type="submit" value="Zapisz">--%>
-</form:form>
-<a href="<c:url value="/"/>">Home</a>
+<%@include file="/WEB-INF/dashboard-header.jsp"%>
+<section class="dashboard-section">
+  <div class="row dashboard-nowrap">
+    <%@ include file="/WEB-INF/side-panel.jsp" %>
+    <div class="m-4 p-3 width-medium text-color-darker">
+      <div class="dashboard-content border-dashed p-3 m-4 view-height">
+        <form:form method="post" modelAttribute="breakdown">
+          <form:hidden path="id"/>
+          <div class="mt-4 ml-4 mr-4">
+            <div class="row border-bottom border-3">
+              <div class="col"><h3 class="color-header text-uppercase">Nowe zgłoszenie</h3></div>
+              <div class="col d-flex justify-content-end mb-2">
+                <button type="submit" class="btn btn-color rounded-0 pt-0 pb-0 pr-4 pl-4">Dodaj</button>
+              </div>
+            </div>
+
+            <table class="table borderless">
+              <tbody>
+              <tr class="d-flex">
+                <th scope="row" class="col-2">Opisz problem</th>
+                <td class="col-7">
+                  <form:textarea path="description" class="w-100 p-1"/>
+                  <form:errors path="description"/>
+                </td>
+              </tr>
+              <tr class="d-flex">
+                <th scope="row" class="col-2">Data zgłoszenia</th>
+                <td class="col-2">
+                  <form:input path="dateOfNotification" type="date" class="w-100 p-1"/>
+                  <form:errors path="dateOfNotification"/>
+                </td>
+              </tr>
+              <tr class="d-flex">
+                <th scope="row" class="col-2">Data przyjazdu technika</th>
+                <td class="col-2">
+                  <form:input path="dateOfArrival" type="date" class="w-100 p-1"/>
+                  <form:errors path="dateOfArrival"/>
+                </td>
+              </tr>
+              <tr class="d-flex">
+                <th scope="row" class="col-2">Wybierz sprzęt</th>
+                <td class="col-2">
+                  <form:select path="equipment.id" items="${list_of_equipments}" itemValue="id" itemLabel="name" />
+                  <form:errors path="equipment"/>
+                </td>
+              </tr>
+              <tr class="d-flex">
+                <th scope="row" class="col-2">Wybierz serwis</th>
+                <td class="col-2">
+                  <form:select path="repairService.id" items="${list_of_repair_services}" itemValue="id" itemLabel="name" />
+                  <form:errors path="repairService"/>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <div class="col d-flex justify-content-end mb-2 noPadding">
+              <a href="<c:out value="/problem/all"/>" class="btn btn-success rounded-0 pt-0 pb-0 pr-4 pl-4">Powrót</a>
+            </div>
+          </div>
+        </form:form>
+      </div>
+    </div>
+  </div>
+</section>
+<%@include file="/WEB-INF/footer.jsp"%>
 </body>
 </html>

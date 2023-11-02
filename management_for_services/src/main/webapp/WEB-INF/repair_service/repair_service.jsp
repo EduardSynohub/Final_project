@@ -7,6 +7,11 @@
   <title>Informacja o serwisie</title>
 </head>
 <body>
+<%@include file="/WEB-INF/dashboard-header.jsp"%>
+<section class="dashboard-section">
+  <div class="row dashboard-nowrap">
+    <%@ include file="/WEB-INF/side-panel.jsp" %>
+    <div>
 <table border="1">
   <thead>
   <th>Nazwa serwisu</th>
@@ -22,5 +27,8 @@
   </tbody>
 </table>
 <a href="<c:out value="/repair/all"/>">Powrót</a>
+    </div>
+  </div>
+</section>
 </body>
 </html>

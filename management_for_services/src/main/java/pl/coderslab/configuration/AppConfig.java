@@ -19,10 +19,10 @@ import javax.validation.Validator;
 import java.util.Locale;
 
 @Configuration
-@ComponentScan(basePackages = "pl.coderslab.domain")
+@ComponentScan(basePackages = "pl.coderslab")
 @EnableWebMvc
 @EnableTransactionManagement
-@EnableJpaRepositories("pl.coderslab.domain")
+@EnableJpaRepositories("pl.coderslab")
 public class AppConfig implements WebMvcConfigurer {
 
     @Bean
@@ -63,14 +63,14 @@ public class AppConfig implements WebMvcConfigurer {
         configurer.enable();
     }
 
-    @Override
-    public void configurePathMatch(PathMatchConfigurer configurer) {
-        configurer.setUseSuffixPatternMatch(false);
-    }
+//    @Override
+//    public void configurePathMatch(PathMatchConfigurer configurer) {
+//        configurer.setUseSuffixPatternMatch(false);
+//    }
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("forward:user/start");
+        registry.addViewController("/").setViewName("forward:/home");
     }
 
 }

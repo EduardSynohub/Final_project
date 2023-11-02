@@ -1,5 +1,6 @@
 package pl.coderslab.domain.equipment;
 
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -7,6 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import pl.coderslab.domain.breakdown.Breakdown;
+import pl.coderslab.domain.breakdown.JpaBreakdownService;
+import pl.coderslab.domain.restaurant.JpaRestaurantService;
+import pl.coderslab.domain.restaurant.Restaurant;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -16,9 +21,13 @@ import java.util.List;
 public class EquipmentController {
 
     private final JpaEquipmentService jpaEquipmentService;
+    private final JpaRestaurantService jpaRestaurantService;
+    private final JpaBreakdownService jpaBreakdownService;
 
-    public EquipmentController(JpaEquipmentService jpaEquipmentService) {
+    public EquipmentController(JpaEquipmentService jpaEquipmentService, JpaRestaurantService jpaRestaurantService, JpaBreakdownService jpaBreakdownService) {
         this.jpaEquipmentService = jpaEquipmentService;
+        this.jpaRestaurantService = jpaRestaurantService;
+        this.jpaBreakdownService = jpaBreakdownService;
     }
 
     @GetMapping("/all")
@@ -64,8 +73,19 @@ public class EquipmentController {
         return "equipment/equipment";
     }
 
+    @Secured("ROLE_ADMIN")
     @GetMapping ("/delete/{id}")
     public String deleteEquipment(@PathVariable Long id) {
+        List<Restaurant> restaurants = jpaRestaurantService.getAll();
+        for(Restaurant r : restaurants) {
+            jpaRestaurantService.deleteEquipmentFromRestaurant(id, r.getId());
+        }
+        List<Breakdown> breakdowns = jpaBreakdownService.getAll();
+        for (Breakdown b : breakdowns) {
+            if (b.getEquipment().getId().equals((jpaEquipmentService.get(id)).get().getId())) {
+                jpaBreakdownService.delete(b.getId());
+            }
+        }
         jpaEquipmentService.delete(id);
         return "redirect:/equip/all";
     }

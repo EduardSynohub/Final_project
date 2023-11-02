@@ -31,6 +31,11 @@ public class JpaEquipmentService implements EquipmentService{
 
     @Override
     public void delete(Long id) {
+
         equipmentRepository.deleteById(id);
+    }
+
+    public Optional<Equipment> findEquipmentByName(String name) {
+        return equipmentRepository.findEquipmentByName(name);
     }
 }

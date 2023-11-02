@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
 <html>
@@ -25,19 +25,16 @@
     </a>
     <ul class="nav nounderline text-uppercase">
       <li class="nav-item ml-4">
-        <a class="nav-link color-header" href="/user/logging">logowanie</a>
+        <a class="nav-link color-header" href="/login">logowanie</a>
       </li>
       <li class="nav-item ml-4">
-        <a class="nav-link color-header" href="/user/create">rejestracja</a>
+        <a class="nav-link color-header" href="/create">rejestracja</a>
       </li>
       <li class="nav-item ml-4">
         <a class="nav-link" href="/problem/all">Wszystkie zgłoszenia</a>
       </li>
       <li class="nav-item ml-4">
-        <a class="nav-link disabled" href="/list">Przepisy</a>
-      </li>
-      <li class="nav-item ml-4">
-        <a class="nav-link disabled" href="/contactServlet">Kontakt</a>
+        <a class="nav-link disabled" href="/about">O nas</a>
       </li>
       <li class="nav-item ml-4">
         <a class="nav-link disabled" href="/"><div class="circle-div text-center"><i class="fas fa-user icon-user"></i></div></a>
