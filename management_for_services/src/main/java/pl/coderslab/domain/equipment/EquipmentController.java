@@ -67,12 +67,6 @@ public class EquipmentController {
         return "redirect:/equip/all";
     }
 
-    @GetMapping("/get/{id}")
-    public String showEquipment(Model model, @PathVariable Long id){
-        model.addAttribute("equipment", jpaEquipmentService.get(id));
-        return "equipment/equipment";
-    }
-
     @Secured("ROLE_ADMIN")
     @GetMapping ("/delete/{id}")
     public String deleteEquipment(@PathVariable Long id) {

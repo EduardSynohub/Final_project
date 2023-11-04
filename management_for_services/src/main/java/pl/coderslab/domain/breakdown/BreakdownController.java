@@ -7,8 +7,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.domain.CurrentUser;
 import pl.coderslab.domain.equipment.Equipment;
-import pl.coderslab.domain.equipment.JpaEquipmentService;
-import pl.coderslab.domain.repair_service.JpaRepairService;
 import pl.coderslab.domain.repair_service.RepairService;
 import pl.coderslab.domain.restaurant.Restaurant;
 import pl.coderslab.domain.user.JpaUserService;
@@ -26,14 +24,10 @@ import java.util.Set;
 public class BreakdownController {
 
     private final JpaBreakdownService jpaBreakdownService;
-    private final JpaEquipmentService jpaEquipmentService;
-    private final JpaRepairService jpaRepairService;
     private final JpaUserService jpaUserService;
 
-    public BreakdownController(JpaBreakdownService jpaBreakdownService, JpaEquipmentService jpaEquipmentService, JpaRepairService jpaRepairService, JpaUserService jpaUserService) {
+    public BreakdownController(JpaBreakdownService jpaBreakdownService, JpaUserService jpaUserService) {
         this.jpaBreakdownService = jpaBreakdownService;
-        this.jpaEquipmentService = jpaEquipmentService;
-        this.jpaRepairService = jpaRepairService;
         this.jpaUserService = jpaUserService;
     }
 
@@ -52,7 +46,13 @@ public class BreakdownController {
     @ModelAttribute("list_of_repair_services")
     public Set<RepairService> repairServiceList(@AuthenticationPrincipal CurrentUser customUser) {
         Long id = customUser.getUser().getId();
-        return jpaUserService.get(id).get().getRestaurant().getRepairServices();
+        Optional<User> userOptional = jpaUserService.get(id);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            return user.getRestaurant().getRepairServices();
+        } else {
+            throw new NoSuchElementException("Nie odnaleziono żadnego użytkownika, żeby przejść dalej");
+        }
     }
 
     @GetMapping("/all")
@@ -90,27 +90,6 @@ public class BreakdownController {
         jpaBreakdownService.create(breakdown);
         return "redirect:/problem/all";
     }
-
-//    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-//    public String showEditForm(@PathVariable long id, Model model) {
-//        model.addAttribute("breakdown", jpaBreakdownService.get(id));
-//        return "breakdown/edit";
-//    }
-//
-//    @RequestMapping(value = "/edit", method = RequestMethod.POST)
-//    public String editBreakdown(@Valid Breakdown breakdown, BindingResult bindingResult) {
-//        if (bindingResult.hasErrors()) {
-//            return "breakdown/edit";
-//        }
-//        jpaBreakdownService.create(breakdown);
-//        return "redirect:/problem/all";
-//    }
-
-//    @GetMapping("/get/{id}")
-//    public String showBreakdown(Model model, @PathVariable Long id){
-//        model.addAttribute("breakdown", jpaBreakdownService.get(id));
-//        return "breakdown/breakdown";
-//    }
 
     @GetMapping ("/delete/{id}")
     public String deleteBreakdown(@PathVariable Long id) {

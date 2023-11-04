@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import pl.coderslab.domain.CurrentUser;
 import pl.coderslab.domain.breakdown.Breakdown;
 import pl.coderslab.domain.breakdown.JpaBreakdownService;
-import pl.coderslab.domain.equipment.Equipment;
-import pl.coderslab.domain.equipment.JpaEquipmentService;
 import pl.coderslab.domain.restaurant.JpaRestaurantService;
 import pl.coderslab.domain.restaurant.Restaurant;
 
@@ -28,13 +26,11 @@ public class RepairServiceController {
     private final JpaRepairService jpaRepairService;
     private final JpaRestaurantService jpaRestaurantService;
     private final JpaBreakdownService jpaBreakdownService;
-    private final JpaEquipmentService jpaEquipmentService;
 
-    public RepairServiceController(JpaRepairService jpaRepairService, JpaRestaurantService jpaRestaurantService, JpaBreakdownService jpaBreakdownService, JpaEquipmentService jpaEquipmentService) {
+    public RepairServiceController(JpaRepairService jpaRepairService, JpaRestaurantService jpaRestaurantService, JpaBreakdownService jpaBreakdownService) {
         this.jpaRepairService = jpaRepairService;
         this.jpaRestaurantService = jpaRestaurantService;
         this.jpaBreakdownService = jpaBreakdownService;
-        this.jpaEquipmentService = jpaEquipmentService;
     }
 
     @GetMapping("/all")
@@ -80,12 +76,6 @@ public class RepairServiceController {
         }
         jpaRepairService.create(repairService);
         return "redirect:/repair/all";
-    }
-
-    @GetMapping("/get/{id}")
-    public String showRepairService(Model model, @PathVariable Long id){
-        model.addAttribute("repair_service", jpaRepairService.get(id));
-        return "repair_service/repair_service";
     }
 
     @Secured("ROLE_ADMIN")

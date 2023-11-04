@@ -1,95 +1,3 @@
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>--%>
-<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
-<%--<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>--%>
-
-<%--<html>--%>
-<%--<head>--%>
-<%--  <title>Obecna restauracja</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<%@include file="/WEB-INF/dashboard-header.jsp"%>--%>
-<%--<section class="dashboard-section">--%>
-<%--  <div class="row dashboard-nowrap">--%>
-<%--    <%@ include file="/WEB-INF/side-panel.jsp" %>--%>
-<%--    <div>--%>
-<%--<table border="1">--%>
-<%--  <thead>--%>
-<%--  <th>Nazwa restauracji</th>--%>
-<%--  <th>Adres</th>--%>
-<%--  </thead>--%>
-<%--  <tbody>--%>
-<%--  <tr>--%>
-<%--    <td><c:out value="${restaurant.get().name}"/></td>--%>
-<%--    <td><c:out value="${restaurant.get().address}"/></td>--%>
-<%--  </tr>--%>
-<%--  </tbody>--%>
-<%--</table>--%>
-<%--<br>--%>
-<%--<br>--%>
-<%--<br>--%>
-<%--<br>--%>
-<%--<div>--%>
-<%--<div>--%>
-<%--  <table border="1">--%>
-<%--    <thead>--%>
-<%--    <th>Sprzęt w restauracji</th>--%>
-<%--    <th></th>--%>
-<%--    </thead>--%>
-<%--    <tbody>--%>
-<%--    <c:forEach items="${restaurant.get().equipments}" var="equipment">--%>
-<%--      <tr>--%>
-<%--        <td>--%>
-<%--          <c:out value="${equipment.name}"/><br>--%>
-<%--        </td>--%>
-<%--        <td>--%>
-<%--          <a href="<c:out value="/rest/deleteEquipment/${restaurant.get().id}/${equipment.id}"/>">Usuń</a>--%>
-<%--        </td>--%>
-<%--      </tr>--%>
-<%--    </c:forEach>--%>
-<%--    </tbody>--%>
-<%--  </table>--%>
-<%--</div>--%>
-<%--  <br>--%>
-<%--  <br>--%>
-<%--  <br>--%>
-<%--  <br>--%>
-<%--<div>--%>
-<%--  <table border="1">--%>
-<%--    <thead>--%>
-<%--    <th>Serwisy które obsługują restaurację</th>--%>
-<%--    <th></th>--%>
-<%--    </thead>--%>
-<%--    <tbody>--%>
-<%--  <c:forEach items="${restaurant.get().repairServices}" var="repairService">--%>
-<%--  <tr>--%>
-<%--    <td>--%>
-<%--    <c:out value="${repairService.name}"/><br>--%>
-<%--    </td>--%>
-<%--    <td>--%>
-<%--      <a href="<c:out value="/rest/deleteRepairService/${restaurant.get().id}/${repairService.id}"/>">Usuń</a>--%>
-<%--    </td>--%>
-<%--  </tr>--%>
-<%--  </c:forEach>--%>
-<%--    </tbody>--%>
-<%--  </table>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--<a href="<c:out value="/rest/addEquipment"/>">Dodaj sprzęt</a>--%>
-<%--<a href="<c:out value="/rest/addRepairService"/>">Dodaj serwis</a>--%>
-<%--<a href="<c:out value="/rest/all"/>">Powrót</a>--%>
-<%--    </div>--%>
-<%--  </div>--%>
-<%--</section>--%>
-<%--</body>--%>
-<%--</html>--%>
-
-
-
-
-
-
-
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -164,5 +72,6 @@
       </div>
     </div>
 </section>
+<%@include file="/WEB-INF/footer.jsp"%>
 </body>
 </html>

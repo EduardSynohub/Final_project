@@ -31,13 +31,10 @@
         <a class="nav-link color-header" href="/create">rejestracja</a>
       </li>
       <li class="nav-item ml-4">
-        <a class="nav-link" href="/problem/all">Wszystkie zgłoszenia</a>
+        <a class="nav-link" href="/problem/all">Zgłoszenia</a>
       </li>
       <li class="nav-item ml-4">
         <a class="nav-link disabled" href="/about">O nas</a>
-      </li>
-      <li class="nav-item ml-4">
-        <a class="nav-link disabled" href="/"><div class="circle-div text-center"><i class="fas fa-user icon-user"></i></div></a>
       </li>
     </ul>
   </nav>

@@ -48,15 +48,4 @@ public class Breakdown {
     @ManyToOne
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
-
-    public void deleteRepaidService() {
-        this.repairService = null;
-    }
-
-    public void deleteRestaurant() {
-        this.restaurant = null;
-    }
-    public void deleteEquipment() {
-        this.equipment = null;
-    }
 }

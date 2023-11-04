@@ -84,5 +84,6 @@
         </div>
     </div>
 </section>
+<%@include file="/WEB-INF/footer.jsp"%>
 </body>
 </html>

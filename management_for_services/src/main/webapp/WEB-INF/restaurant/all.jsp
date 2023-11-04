@@ -36,7 +36,9 @@
       <td class="col-3"><c:out value="${restaurant.name}"/></td>
       <td class="col-6"><c:out value="${restaurant.address}"/></td>
       <td class="col-3 d-flex align-items-center justify-content-center flex-wrap">
+    <c:if test="${restaurant.id eq restaurant_id}">
         <a href="<c:out value="/rest/edit/${restaurant.id}"/>" class="btn btn-warning rounded-0 text-light m-1">Edytuj</a>
+    </c:if>
         <a href="<c:out value="/rest/delete/${restaurant.id}"/>" class="btn btn-danger rounded-0 text-light m-1">Usuń</a>
     <c:if test="${restaurant.id eq restaurant_id}">
         <a href="<c:out value="/rest/get/${restaurant.id}"/>" class="btn btn-info rounded-0 text-light m-1">Pokaż</a>
@@ -51,5 +53,6 @@
       </div>
   </div>
 </section>
+<%@include file="/WEB-INF/footer.jsp"%>
 </body>
 </html>

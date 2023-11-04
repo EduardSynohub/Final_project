@@ -36,7 +36,7 @@ public class RepairService {
     @Column(name = "phone_number", unique = true)
     @NotEmpty(message = "Pole nie powinno być puste")
     @Size(min = 9, max = 9, message = "Przykładowy numer telefonu: 123456789")
-    @Pattern(regexp = "^\\d{9}$", message = "Powinno być dokłądnie 9 liczb")
+    @Pattern(regexp = "^\\d{9}$", message = "Powinno być dokładnie 9 liczb")
     private String phoneNumber;
 
     private String description;

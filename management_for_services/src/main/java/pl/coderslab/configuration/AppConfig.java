@@ -63,11 +63,6 @@ public class AppConfig implements WebMvcConfigurer {
         configurer.enable();
     }
 
-//    @Override
-//    public void configurePathMatch(PathMatchConfigurer configurer) {
-//        configurer.setUseSuffixPatternMatch(false);
-//    }
-
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("forward:/home");

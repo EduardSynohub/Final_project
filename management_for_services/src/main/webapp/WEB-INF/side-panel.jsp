@@ -52,16 +52,10 @@
     </sec:authorize>
   </li>
   <li class="nav-item">
-    <a class="nav-link">
-      <span>
-        <sec:authorize access="isAuthenticated()">
-          <form action="<c:url value="/logout"/>" method="post">
-            <input class="fa fa-id-badge" type="submit" value="Wyloguj">
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-          </form>
-        </sec:authorize>
-      </span>
+    <a class="nav-link" href="<c:url value="/logout"/>">
+      <span>Wyloguj</span>
       <i class="fas fa-angle-right"></i>
     </a>
   </li>
+
 </ul>

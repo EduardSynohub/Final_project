@@ -43,7 +43,6 @@
       <td class="col-2 d-flex align-items-center justify-content-center flex-wrap">
         <a href="<c:out value="/repair/edit/${repair_service.id}"/>" class="btn btn-warning rounded-0 text-light m-1">Edytuj</a>
         <a href="<c:out value="/repair/delete/${repair_service.id}"/>" class="btn btn-danger rounded-0 text-light m-1">Usuń</a>
-<%--        <a href="<c:out value="/repair/get/${repair_service.id}"/>" class="btn btn-info rounded-0 text-light m-1">Szczegóły</a>--%>
       </td>
     </tr>
   </c:forEach>
@@ -54,5 +53,6 @@
       </div>
   </div>
 </section>
+<%@include file="/WEB-INF/footer.jsp"%>
 </body>
 </html>

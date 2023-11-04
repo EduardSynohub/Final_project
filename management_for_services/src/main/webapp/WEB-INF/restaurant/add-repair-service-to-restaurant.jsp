@@ -1,37 +1,3 @@
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>--%>
-<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
-<%--<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>--%>
-<%--<html>--%>
-<%--<head>--%>
-<%--  <title>Przypisz serwis naprawczy restauracji</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<%@include file="/WEB-INF/dashboard-header.jsp"%>--%>
-<%--<section class="dashboard-section">--%>
-<%--  <div class="row dashboard-nowrap">--%>
-<%--    <%@ include file="/WEB-INF/side-panel.jsp" %>--%>
-<%--    <div>--%>
-
-<%--<h2>Dodawanie serwisu do restauracji</h2>--%>
-
-<%--<form action="/rest/addRepairService" method="post">--%>
-<%--  <input type="hidden" id="restaurantId" name="restaurantId" value="${restaurantId}">--%>
-<%--  <label>Wybierz serwis:</label>--%>
-<%--  <select name="repairServiceId">--%>
-<%--    <c:forEach items="${list_of_repair_services}" var="repairService">--%>
-<%--      <option value="${repairService.id}">${repairService.name}</option>--%>
-<%--    </c:forEach>--%>
-<%--  </select>--%>
-<%--  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
-<%--  <button type="submit">Dodaj serwis</button>--%>
-<%--</form>--%>
-<%--    </div>--%>
-<%--  </div>--%>
-<%--</section>--%>
-<%--</body>--%>
-<%--</html>--%>
-
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
   response.setCharacterEncoding("UTF-8");
